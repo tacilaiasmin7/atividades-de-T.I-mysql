@@ -78,7 +78,7 @@
 
     // inserir dados 
     $sql = "INSERT INTO produtos (nome, telefone, aparelho, data, descricao)
-     VALUES ('$nome', '$telefone', '$aparelho', '$data', '$descricao')";
+     VALUES ('$nome', '$telefone', '$aparelho', '$data', '$problema')";
 
 
 if ($conn-> query($sql) === TRUE) {
@@ -106,4 +106,5 @@ $conn->close();
    <button onclick="window.history.back()">Voltar</button><br>
   </div>
 </body>
+
 </html>
