@@ -1,0 +1,8 @@
+CREATE DATABASE validacao;
+USE validacao;
+
+CREATE TABLE clientes (
+
+cpf VARCHAR (11) PRIMARY KEY,
+data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
