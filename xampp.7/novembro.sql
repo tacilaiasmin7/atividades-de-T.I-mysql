@@ -1,0 +1,10 @@
+CREATE DATABASE novembro;
+USE novembro;
+
+CREATE TABLE versao (
+cpf VARCHAR (11) PRIMARY KEY,
+nome VARCHAR (100),
+idade VARCHAR (3),
+data DATE NOT NULL,
+data_enivo TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

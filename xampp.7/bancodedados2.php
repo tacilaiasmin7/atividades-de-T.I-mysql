@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho Professora Bárbara</title>
+
+    <style>
+/* Estilo Novembro Azul 💙 */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(180deg, #e0f2ff, #b3e0ff);
+  margin: 0;
+  padding: 0;
+  color: #003366;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Título */
+h2 {
+  background-color: #0074cc;
+  color: white;
+  text-align: center;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-top: 40px;
+  box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3);
+}
+
+/* Formulário */
+form {
+  background-color: white;
+  border: 2px solid #0074cc;
+  border-radius: 12px;
+  padding: 30px 40px;
+  margin-top: 25px;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+  width: 320px;
+  text-align: left;
+}
+
+/* Labels e inputs */
+label {
+  font-weight: bold;
+  color: #004080;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 4px;
+  border: 1px solid #66b2ff;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+/* Foco nos campos */
+input:focus {
+  border-color: #0074cc;
+  box-shadow: 0 0 5px rgba(0, 116, 204, 0.4);
+  outline: none;
+}
+
+/* Botões */
+input[type="submit"],
+button {
+  background-color: #0074cc;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: #005fa3;
+}
+
+/* Rodapé (opcional) */
+footer {
+  margin-top: auto;
+  padding: 15px;
+  color: #003366;
+  font-size: 14px;
+}
+
+
+    </style>
+</head>
+
+<body>
+  <div>
+   <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nome = $_POST["nome"];
+        $idade = $_POST["idade"];
+        $cpf = $_POST["cpf"];
+        $data = $_POST["data"];
+    }
+
+    // conexão com o banco de dados
+    if (!ctype_digit($cpf) || strlen($cpf) !=11) {
+      echo "<p>⚠️ O CPF deve conter 11 digitos.</p>";
+      exit;
+    }
+    $conn =  new mysqli ("localhost", "root", "aluno", "novembro", 3307);
+
+    if ($conn->connect_error) {
+        die("<p style='color:red;'>Erro na conexão com o banco de dados:" . $conn->connect_error . "</p>");
+    }
+
+    // inserir dados 
+    $sql = "INSERT INTO versao (nome, idade, cpf, data)
+     VALUES ('$nome', '$idade', '$cpf', '$data')";
+
+
+if ($conn-> query($sql) === TRUE) {
+    echo "<h3>📥 Dados Recebidos (POST)</h3>";
+    echo "Nome: $nome <br>";
+    echo "Idade: $idade <br>";
+    echo "CPF: $cpf <br>";
+    echo "Data: $data <br>";
+} else{
+    echo "<p style= 'color: red;'>❌ Erro ao salvar:" . $conn->error . "</P>";
+}
+
+$conn->close();
+
+
+    echo "<h3>🛍️ Informações da Campanha</h3>";
+    if (isset($_GET['campanha']) && isset($_GET['versao'])) {
+        $campanha = $_GET['campanha'];
+        $versao = $_GET['versao'];
+        echo "Campanha: $campanha <br>";
+        echo "Versão: $versao <br>";
+    }
+   ?>
+   <button onclick="window.history.back()">Voltar</button><br>
+  </div>
+</body>
+
+</html>
