@@ -10,13 +10,28 @@
 body {
   font-family: "Poppins", Arial, sans-serif;
   background: linear-gradient(180deg, #e0f2ff, #b3e0ff);
-  margin: 0;
-  padding: 0;
+  margin: 10px;
+  padding: 50px;
   color: #003366;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+}
+
+.imagem{
+  float: right;
+  margin-left: 50%;
+}
+
+.container{
+  background-color: white;
+  border-radius: 10px;
+  margin-left:0;
+  margin-right: auto;
+  width: 50%;
+  position: relative;
+  top: -350px;
 }
 
 /* Título */
@@ -86,20 +101,14 @@ button:hover {
   background-color: #005fa3;
 }
 
-/* Rodapé (opcional) */
-footer {
-  margin-top: auto;
-  padding: 15px;
-  color: #003366;
-  font-size: 14px;
-}
-
-
     </style>
 </head>
 
 <body>
-  <div>
+  <div class="imagem">
+  <img src="novembro.jpg" alt="imagem novembro azul" width="100%" height="100%">
+  </div>
+  <div class="container">
    <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nome = $_POST["nome"];
@@ -145,6 +154,14 @@ $conn->close();
         echo "Versão: $versao <br>";
     }
    ?>
+
+      <h1 style="color: green;">Dicas de Atitudes de prevenção</h1>
+      <h2>Consultas médicas e exames:</h2>
+      <p>1-Realize exames preventivos regularmente, começando aos 50 anos. <br>
+        2-Se tiver histórico familiar, comece aos 45 anos. <br>
+        3-Homens com histórico familiar de câncer de próstata ou outras doenças genéticas devem procurar o urologista mais cedo. <br>
+        4-Converse com seu médico sobre a realização de exames como o PSA e o toque retal. </p><br>
+
    <button onclick="window.history.back()">Voltar</button><br>
   </div>
 </body>

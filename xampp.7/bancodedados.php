@@ -91,16 +91,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Rodapé */
-footer {
-  margin-top: auto;
-  padding: 15px;
-  color: #003366;
-  font-size: 15px;
-  text-align: center;
-  font-weight: bold;
-}
-
 /* Animação suave ao carregar */
 form, h2 {
   animation: fadeIn 1s ease;
